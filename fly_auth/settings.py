@@ -39,7 +39,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django_extensions',
     'debug_toolbar',
-    'fake_user'
+    'fake_user',
+    'rest_framework',
 )
 
 MIDDLEWARE_CLASSES = (

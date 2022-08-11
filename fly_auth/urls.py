@@ -17,12 +17,12 @@ from django.contrib import admin
 from .views import index
 import debug_toolbar
 # from django.contrib.auth.views import login
-from fake_user.views import login, logout
-
+from fake_user.views import login, logout, router
 
 
 urlpatterns = [
     url(r'^$', index),
+    url(r'^api/', include(router.urls)),
     url(r'^login/$', login, name="v_login"),
     url(r'^logout/$', logout, name="v_logout"),
     url(r'^admin/', include(admin.site.urls)),
