@@ -18,8 +18,20 @@ class FakeUser(models.Model):
 
 
 
+class PermissionsMixin():
+    def has_perm(self, perm, obj=None):
+        return False 
 
-class FakeUserProxy(FakeUser):
+    def has_perms(self, perm, obj=None):
+        return False 
+
+    def has_module_perms(self, app_label):
+        return False
+
+    class Meta:
+        abstract = True
+
+class FakeUserProxy(FakeUser, PermissionsMixin):
     is_active = True
     is_staff = False 
     is_superuser = False 
@@ -37,7 +49,6 @@ class FakeUserProxy(FakeUser):
         authenticated in templates.
         """
         return True
-
 
     class Meta:
         proxy = True
